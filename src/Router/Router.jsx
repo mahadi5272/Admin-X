@@ -5,6 +5,7 @@ import RootLayOut from "../layout/RootLayOut";
 import Home from "../pages/Home";
 import Contoct from "../pages/Contoct";
 import About from "../pages/About";
+import MyTasks from "../Users/MyTasks";
 // import { RouterProvider } from "react-router/dom";
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path:"/about",
         Component:About
+      },
+      {
+        path:'/myTasks',
+        Component:MyTasks
       }
     ],
   },

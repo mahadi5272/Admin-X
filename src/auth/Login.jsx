@@ -50,7 +50,7 @@ const Login = () => {
               className="btn w-full text-[#574964] bg-[#FFDAB3]"
               type="submit"
             >
-              SignUp
+              Login
             </button>
           </div>
         </form>
