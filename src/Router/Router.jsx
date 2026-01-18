@@ -6,6 +6,9 @@ import Home from "../pages/Home";
 import Contoct from "../pages/Contoct";
 import About from "../pages/About";
 import MyTasks from "../Users/MyTasks";
+import AllUsers from "../Admin/AllUsers";
+import ManageTasks from "../Admin/ManageTasks";
+import AllTask from "../Admin/Dashboard";
 // import { RouterProvider } from "react-router/dom";
 
 export const router = createBrowserRouter([
@@ -13,6 +16,10 @@ export const router = createBrowserRouter([
     path: "/",
     Component: RootLayOut,
     children: [
+      {
+        path: "/",
+        Component: Home,
+      },
 
       {
         path: "/signUp",
@@ -22,21 +29,30 @@ export const router = createBrowserRouter([
         path: "/login",
         Component: Login,
       },
+
       {
-        path:"/home",
-        Component:Home
+        path: "/contact",
+        Component: Contoct,
       },
       {
-        path:"/contact",
-        Component:Contoct
+        path: "/about",
+        Component: About,
       },
       {
-        path:"/about",
-        Component:About
+        path: "/myTasks",
+        Component: MyTasks,
       },
       {
-        path:'/myTasks',
-        Component:MyTasks
+        path:'/allUsers',
+        Component:AllUsers
+      },
+      {
+        path:"/manageTasks",
+        Component:ManageTasks
+      },
+      {
+        path:"/allTask",
+        Component:AllTask
       }
     ],
   },

@@ -6,6 +6,7 @@ import { AuthContext } from './AuthContext';
 const AuthProvider = ({children}) => {
     const [user,setuser] = useState(null)
     const [role , setrole] = useState(null)
+    const [authErr,setAuthErr] = useState(true)
     // signup
     const signup = (email,password) =>{
         return createUserWithEmailAndPassword(auth,email,password)
@@ -24,8 +25,14 @@ const AuthProvider = ({children}) => {
                 fetch(`http://localhost:3000/users/${currentUser.email}`)
                 .then(res=> res.json())
                 .then(data =>{
+                    setAuthErr(false)
                     setrole(data.role)
                     console.log("Database response:", data);
+                })
+                .catch(err=>{
+                    setAuthErr(true)
+                    console.log("সার্ভার চালু নেই বা কানেকশন পাওয়া যাচ্ছে না");
+                    console.log(err)
                 })
             }
         })
@@ -37,6 +44,7 @@ const AuthProvider = ({children}) => {
         logout,
         user,
         role,
+        authErr,
         
     }
     return <AuthContext.Provider value={UserInfo} >{children}</AuthContext.Provider>

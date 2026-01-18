@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const beforLogin = (
   <>
     <li>
-      <Link to="/home">Home</Link>
+      <Link to="/">Home</Link>
     </li>
     <li>
       <Link to="/about">About</Link>
@@ -24,16 +24,16 @@ const beforLogin = (
 const Admin = (
   <>
     <li>
-      <Link to="/home">Home</Link>
+      <Link to="/">Home</Link>
     </li>
     <li>
-      <Link to="/about">All User</Link>
+      <Link to="/allUsers">All User</Link>
     </li>
     <li>
-      <Link to="/contact">Tasks</Link>
+      <Link to="/allTask">Tasks</Link>
     </li>
     <li>
-      <Link to="/contact">Manage Task</Link>
+      <Link to="/manageTasks">Manage Task</Link>
     </li>
   </>
 );
@@ -41,7 +41,7 @@ const Admin = (
 const User = (
   <>
     <li>
-      <Link to="/home">Home</Link>
+      <Link to="/">Home</Link>
     </li>
     <li>
       <Link to="/myTasks">My Tasks</Link>
