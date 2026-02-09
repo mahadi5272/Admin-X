@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ManageTasks = () => {
+    const [users,setUsers] = useState([])
+    useEffect(()=>{
+        fetch("http://localhost:3000/users")
+        .then(res =>res.json())
+        .then(data =>{
+            setUsers(data)
+        })
+    },[])
+    console.log(users)
   const handleTask = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const assignto = form.assignto.value;
     const value = form.value.value;
-    const time = form.Time.value;
+    const status = form.status.value;
     const stack = form.stack.value;
     const TaskInfo = {
       name,
       value,
-      time,
+      status,
       stack,
+      assignto,
     };
     fetch("http://localhost:3000/tasks", {
       method: "POST",
@@ -38,8 +49,18 @@ const ManageTasks = () => {
           <input
           className="w-full text-center py-3" type="text" placeholder="Wright your Task Name" name="name" />
         </div>
+        <div>
+            <select name="assignto">
+                <option value="">Select user (Email)</option>
+                {
+                    users.map(user=><option key={user._id} value={user.email}>
+                        {user.name} :- {user.email}
+                    </option>)
+                }
+            </select>
+        </div>
         <div className="bg-base-100 ">
-          <select className="w-full text-center py-3" name="Time">
+          <select className="w-full text-center py-3" name="status">
             <option value="Pending">Pending</option>
             <option value="Completed">Completed</option>
           </select>

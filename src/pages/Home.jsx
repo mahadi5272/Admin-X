@@ -1,13 +1,16 @@
 import Typewriter from "typewriter-effect";
 import UseAuth from "../hooks/UseAuth";
+import Status from "./Landing-page/Status";
+import GoalAndPlan from "./Landing-page/GoalAndPlan";
+import WhyChooseUs from "./Landing-page/WhyChooseUs";
+import HowItWorks from "./Landing-page/HowItWorks";
+import WhoUsesIt from "./Landing-page/WhoUsesIt";
 // import { toast, ToastContainer } from "react-toastify";
 // import { useEffect } from "react";
 
 const Home = () => {
-  const { authErr} = UseAuth();
-  console.log(authErr)
-
-
+  const { authErr } = UseAuth();
+  console.log(authErr);
 
   return (
     <div>
@@ -23,10 +26,10 @@ const Home = () => {
         </div>
       ) : (
         <section className='h-125 bg-[url("https://i.ibb.co.com/yF8vKVQ3/how-to-streamline-your-workflow.jpg")] bg-no-repeat bg-cover bg-fixed bg-center flex justify-center items-center'>
-          <div className=" w-9/12">
+          <div className=" w-10/12">
             <div className="">
               <img src="" alt="" />
-              <h1 className="md:text-4xl sm:text-2xl lg:text-5xl text-xl text-gray-800 text-center font-bold mb-3">
+              <h1 className="md:text-4xl sm:text-3xl lg:text-5xl text-xl text-gray-800 text-center font-bold mb-3">
                 <Typewriter
                   options={{
                     strings: [
@@ -55,6 +58,26 @@ const Home = () => {
         </section>
       )}
       {/* <ToastContainer /> */}
+      {/* status */}
+      <section className="w-11/12 mx-auto">
+        <Status></Status>
+      </section>
+      {/* GoalAndPlan */}
+      <section className="w-11/12 mx-auto">
+        <GoalAndPlan></GoalAndPlan>
+      </section>
+      {/* WhyChooseUs */}
+      <section className="w-11/12 mx-auto">
+        <WhyChooseUs></WhyChooseUs>
+      </section>
+      {/*  HowItWorks */}
+      <section className="w-11/12 mx-auto">
+        <HowItWorks></HowItWorks>
+      </section>
+      {/* WhoUsesIt */}
+      <section className="w-11/12 mx-auto">
+        <WhoUsesIt></WhoUsesIt>
+      </section>
     </div>
   );
 };

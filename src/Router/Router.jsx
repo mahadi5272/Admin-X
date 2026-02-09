@@ -6,9 +6,9 @@ import Home from "../pages/Home";
 import Contoct from "../pages/Contoct";
 import About from "../pages/About";
 import MyTasks from "../Users/MyTasks";
-import AllUsers from "../Admin/AllUsers";
 import ManageTasks from "../Admin/ManageTasks";
-import AllTask from "../Admin/Dashboard";
+import AllUsers from "../sheard/AllUsers";
+import Tasks from "../sheard/Tasks";
 // import { RouterProvider } from "react-router/dom";
 
 export const router = createBrowserRouter([
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'/allUsers',
-        Component:AllUsers
+        Component:AllUsers,
       },
       {
         path:"/manageTasks",
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"/allTask",
-        Component:AllTask
+        Component:Tasks
       }
     ],
   },

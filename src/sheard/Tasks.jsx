@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TaskCard from '../Component/TaskCard';
 
-const AllTask = () => {
+const Tasks = () => {
     const [tasks,setTasks] = useState([]);
     useEffect(()=>{
         fetch('http://localhost:3000/tasks')
@@ -23,4 +23,4 @@ const AllTask = () => {
     );
 };
 
-export default AllTask;
+export default Tasks;

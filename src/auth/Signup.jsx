@@ -16,7 +16,7 @@ const Signup = () => {
         const newUser = {
           name: name,
           email: email,
-          role: "user",
+          role: "Member",
           createdAt: new Date(),
         };
         return fetch("http://localhost:3000/users", {

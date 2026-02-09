@@ -27,7 +27,7 @@ const Admin = (
       <Link to="/">Home</Link>
     </li>
     <li>
-      <Link to="/allUsers">All User</Link>
+      <Link to="/allUsers">Pople</Link>
     </li>
     <li>
       <Link to="/allTask">Tasks</Link>
@@ -44,37 +44,45 @@ const User = (
       <Link to="/">Home</Link>
     </li>
     <li>
-      <Link to="/myTasks">My Tasks</Link>
+      <Link to="/allTask">Tasks</Link>
     </li>
     <li>
-      <Link to="/home">Submit Progress</Link>
+      <Link to="/allUsers">Pople</Link>
     </li>
+    {/* <li>
+      <Link to="/myTasks">My Tasks</Link>
+    </li> */}
+    {/* <li>
+      <Link to="/home">Submit Progress</Link>
+    </li> */}
   </>
 );
 
 const Navber = () => {
   const { user, role, logout } = UseAuth();
-
   const handlelogOut = () => {
     logout();
   };
+  console.log(user)
 
   return (
     <div className="flex justify-between items-center w-full md:max-w-3xl lg:max-w-5xl mx-auto px-4 py-3 bg-white shadow-sm">
       {/* Logo */}
-      
+
       <div className="flex gap-3 flex-row-reverse">
         <div className="text-xl font-bold">logo</div>
-        <div className="sm:hidden"><RxDropdownMenu className="text-3xl cursor-pointer" /></div>
+        <div className="sm:hidden">
+          <RxDropdownMenu className="text-3xl cursor-pointer" />
+        </div>
       </div>
       {/* Desktop Menu: মোবাইলে হাইড থাকবে */}
       <div className="hidden sm:flex">
         <ul className="flex gap-5 font-medium">
-          {user && role === "admin"
+          {user && role === "Mentor"
             ? Admin
-            : user && role === "user"
-            ? User
-            : beforLogin}
+            : user && role === "Member"
+              ? User
+              : beforLogin}
         </ul>
       </div>
 

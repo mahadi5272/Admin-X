@@ -1,38 +1,49 @@
+// src/Pages/MyTasks.jsx
 import { useEffect, useState } from "react";
 import TaskCard from "../Component/TaskCard";
+import UseAuth from "../hooks/UseAuth";
 
 const MyTasks = () => {
+  const { user } = UseAuth();
   const [Tasks, setTasks] = useState([]);
-  const [loading,setloading] = useState(true)
-  const [err ,seterr] = useState(null)
-  useEffect(() => {
-    fetch("http://localhost:3000/tasks")
-      .then((res) => res.json())
-      .then((data) => {
-        setTasks(data);
-        setloading(false)
-      })
-      .catch((error) => {
-        seterr("সার্ভার চালু নেই বা কানেকশন পাওয়া যাচ্ছে না");
-        setloading(false)
-        console.log(error);
-      });
-  }, []);
+  const [loading, setLoading] = useState(true);
 
-  if(loading){
-    return <p className="font-bold text-green-700 text-2xl text-center mt-40">Loding<span className="text-lg font-bold text-red-400 animate-ping">....</span></p>
-  }
+  useEffect(() => {
+    if (user?.email) {
+      // ইমেইল কুয়েরি পাঠিয়ে শুধু নিজের টাস্ক আনা
+      fetch(`http://localhost:3000/myTask?email=${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTasks(data);
+          setLoading(false);
+        });
+    }
+  }, [user?.email]);
+
+  if (loading) return (
+    <div className="flex justify-center items-center h-screen">
+      <span className="loading loading-spinner loading-lg text-red-400"></span>
+    </div>
+  );
 
   return (
-    <div className="w-5xl mx-auto">
-      <h1 className="text-center text-2xl font-bold text-red-400 py-10">Well Come Tasks Page</h1>
-      <div className="grid grid-cols-3 gap-10 ">
-        {Tasks.map((task) => (
-          <TaskCard task={task}></TaskCard>
-          
-        ))}
+    <div className="max-w-7xl mx-auto px-6 py-10 min-h-screen bg-gray-50">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-extrabold text-slate-800">My Tasks</h1>
+        <p className="text-gray-500 mt-2">Manage and track your assigned work status</p>
       </div>
       
+      {Tasks.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Tasks.map((task) => (
+            <TaskCard key={task._id} task={task} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-20">
+           <p className="text-xl text-gray-400">No tasks assigned to you yet. 😊</p>
+        </div>
+      )}
     </div>
   );
 };
